@@ -1,7 +1,7 @@
 
 const Database = require('../../config/config.cjs');
 const { createDocument, updateDocument, delleDocument, getDocument,getTotalDocuments } = require('./factory/factoryMd.cjs');
-const ProductModels = require('./models/produc.models.cjs')
+const ProductModels = require('./Models/produc.models.cjs')
 
 
 class ProductManagerDb {
