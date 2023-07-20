@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = 8080;
+const port = process.env.PORT;
 const  {engine}   = require('express-handlebars');
 const httpServer = require('http').createServer(app);
 const { Server } = require('socket.io');
@@ -42,7 +42,9 @@ app.use('/db', mongoRoutes);
 app.use('/api', routes);
 app.use('/', webRouter,);
 
-
+// const server = app.listen(port, () => {
+//     console.log(`Servidor corriendo en el puerto ${server.address().port}`);
+// });
 
 
 // Conexión a la base de datos y inicio del servidor
