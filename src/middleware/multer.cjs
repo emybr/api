@@ -7,7 +7,7 @@ const userModels = require("../dao/mongo/Models/user.models.cjs");
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, '../public/doc');
+        cb(null, './public/doc');
     },
     filename: function (req, file, cb) {
         const ext = file.originalname.split('.').pop();
