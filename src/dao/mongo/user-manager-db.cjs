@@ -3,7 +3,7 @@ const Database = require('../../config/config.cjs');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 const { sendEmail } = require('../../service/email.service.cjs');
-const UserModels = require('./models/user.models.cjs');
+const UserModels = require('../mongo/Models/user.models.cjs');
 const { createDocument, updateDocument, getDocument,getBasicUserData } = require('./factory/factoryMd.cjs');
 const CartsManagerDb = require('./carts-manager.db.cjs');
 

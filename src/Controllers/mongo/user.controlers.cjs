@@ -5,7 +5,7 @@ const { info } = require('winston');
 const userManagerDb = new UserManagerDb();
 const passport = require('passport');
 const { ensureAuthenticated } = require('../../middleware/autenticacion.cjs')
-const UserModels = require('../../dao/mongo/models/user.models.cjs');
+const UserModels = require('../../dao/mongo/Models/user.models.cjs');
 const User = new UserModels();
 
 
