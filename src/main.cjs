@@ -20,13 +20,9 @@ const { env } = require('process');
 const io = new Server(httpServer);
 
 
-// Configuración de sesión
 sessionConfig(app);
-
-// Configuración de passport
 passportConfig(app, userManagerDb);
 
-// Configuración de express
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.engine('handlebars', engine());
@@ -42,7 +38,7 @@ app.use('/db', mongoRoutes);
 app.use('/api', routes);
 app.use('/', webRouter);
 
-// Conexión a la base de datos y inicio del servidor
+
 db.connectToDatabase()
     .then(() => {
         httpServer.listen(port, "0.0.0.0", () => {
@@ -59,9 +55,7 @@ io.on('connection', (socket) => {
 
     socket.on('chat message', async (message, username) => {
         console.log(`${username}: ${message}`);
-        // Guardar el mensaje en la base de datos
         await chatManagerDb.insertMessage(message, username);
-        // Emitir el mensaje a todos los clientes conectados
         io.emit('chat message', message, username);
     });
 

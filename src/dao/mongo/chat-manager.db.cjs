@@ -10,14 +10,14 @@ class ChatManagerDB {
 
     }
 
-async insertMessage(message, username) {
-    try {
-        const document = { message, username };
-        await this.createDocument('messagesCollection', document);
-    } catch (e) {
-        console.error(e);
+    async insertMessage(message, username) {
+        try {
+            const document = { message, username };
+            await this.createDocument('messagesCollection', document);
+        } catch (e) {
+            console.error(e);
+        }
     }
-}
 }
 
 module.exports = ChatManagerDB;

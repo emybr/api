@@ -5,7 +5,6 @@ require('dotenv').config();
 
 class Database {
     constructor() {
-        // this.uri = "mongodb+srv://emy82ar:aSvp7zNoOouhsg8r@testcluster0.tjbi9zz.mongodb.net/?retryWrites=true&w=majority"
         this.uri = process.env.NODE_ENV === 'test' ? process.env.TEST_DB_URI : process.env.TEST_DB_URI;
         this.client = new MongoClient(this.uri);
     }
@@ -21,7 +20,6 @@ class Database {
             this.ordersCollection = this.client.db("ticket").collection("tickets");
             this.passwordResetTokensCollection = this.client.db("passwordResetTokens").collection("passwordResetTokens");
         } catch (e) {
-            // console.error(e);
             winstonLogger.error('Error al conectar a la base de datos');
         }
     }

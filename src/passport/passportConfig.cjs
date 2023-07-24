@@ -40,7 +40,6 @@ const passportConfig = (app) => {
     });
   
 
-    // Configuración de passport GitHub
     passport.use(new passportGithub({
         clientID: 'Iv1.b77e98c047845c88',
         clientSecret: 'aef39f4c432ce50e2d5cee5305d46fc3ade23ee1',

@@ -82,8 +82,6 @@ class UserManagerDb {
 
 
 
-    //ver
-
     async validateUser(email, password) {
         try {
             const user = await this.getDocument('usersCollection', { email, password });
@@ -95,7 +93,7 @@ class UserManagerDb {
 
 
 
-    // agrego passport y passport-local
+  
 
 
     async getUserByField(field, value) {
@@ -113,7 +111,7 @@ class UserManagerDb {
     async actualizarContraseña(email) {
         const token = crypto.randomBytes(20).toString('hex');
         const createdAt = Date.now();
-        const expires = new Date(Date.now() + 60 + 60 + 1000); // 1 hour
+        const expires = new Date(Date.now() + 60 + 60 + 1000); 
 
         try {
             if (!this.db.usersCollection) {
@@ -122,7 +120,7 @@ class UserManagerDb {
 
             await this.db.passwordResetTokensCollection.insertOne({ email, token, createdAt, expires });
 
-            // Envío de correo con el token
+            
             const resetUrl = `http://localhost:8080/reset/${token}`;
             const subject = 'Link para resetear la contraseña';
             const text = `Para resetear la contraseña haga click en el siguiente link: ${resetUrl}`;
@@ -140,7 +138,7 @@ class UserManagerDb {
             if (!this.db.usersCollection) {
                 await this.db.connectToDatabase();
             }
-            const hashedPassword = await bcrypt.hash(newPassword, 10); // Generar el hash de la nueva contraseña sin utilizar un salt
+            const hashedPassword = await bcrypt.hash(newPassword, 10); 
             await this.db.usersCollection.updateOne({ email }, { $set: { password: hashedPassword } });
         } catch (error) {
             console.error(error);
@@ -164,8 +162,8 @@ class UserManagerDb {
 
     async updateUserFiles(email, fileUrls) {
         try {
-            const filter = { email }; // Filtro para buscar el usuario por su email
-            const update = { files: fileUrls }; // Campo "files" y valor a actualizar
+            const filter = { email }; 
+            const update = { files: fileUrls }; 
 
             await this.updateDocument('usersCollection', filter, update);
         } catch (error) {
@@ -177,8 +175,8 @@ class UserManagerDb {
 
     async setLastConnection(email) {
         try {
-            const filter = { email }; // Filtro para buscar el usuario por su email
-            const update = { lastConnection: new Date() }; // Campo "lastConnection" y valor a actualizar
+            const filter = { email }; 
+            const update = { lastConnection: new Date() }; 
 
             await this.updateDocument('usersCollection', filter, update);
             console.log('El campo lastConnection ha sido actualizado correctamente');
@@ -203,7 +201,6 @@ class UserManagerDb {
                 lastConnection: { $lt: new Date(Date.now() - 2 * 60 * 1000) }
             }).toArray();
 
-            // Obtener solo los IDs de usuario de los usuarios inactivos
             const inactiveUserIds = inactiveUsers.map(user => user._id);
             const inactiveCartIds = inactiveUsers.map(user => user.cartId);
             console.log('Inactive User IDs:', inactiveUserIds);
@@ -242,8 +239,6 @@ class UserManagerDb {
         }
     }
 
-    // agrego fucion para obtener todos los usuarios y sus datos nombre, correo y rol
-   
     async  getUsersData() {
         try {
             const projection = { nombre: 1, email: 1, role: 1, apellido: 1 };
@@ -255,7 +250,6 @@ class UserManagerDb {
         }
     }
 
-// agrego funcion para eliminar un usuario por email desde administrador
 
     async deleteUser(email) {
         try {

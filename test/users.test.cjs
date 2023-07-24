@@ -34,23 +34,23 @@ describe('POST /register', () => {
 
 describe('POST /login', () => {
   it('should log in the user and redirect to /products/db', function (done) {
-    this.timeout(5000); // Establece un tiempo de espera de 5000 ms
+    this.timeout(5000);
 
     const credentials = {
       email: 'test@test.com',
       password: 'test'
     };
 
-    request // 'app' es tu aplicación Express
+    request 
       .post('/login')
       .send(credentials)
-      .expect(302) // Verifica el código de estado de redirección
-      .expect('Location', '/products/db') // Verifica que la respuesta redireccione a la ruta /products/db
+      .expect(302) 
+      .expect('Location', '/products/db') 
       .end(done);
   });
 });
 
-// agrego test para login con credenciales invalidas
+
 
 it('should return 401 status and error message for invalid credentials', (done) => {
   const credentials = {

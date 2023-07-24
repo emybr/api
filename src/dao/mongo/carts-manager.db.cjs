@@ -116,7 +116,7 @@ class CartsManagerDb {
     }
 
 
-    // Actualizar el carrito del usuario después de la compra
+
 
     async updateCartAfterPurchase(email, purchasedProductIds) {
         try {
@@ -133,8 +133,6 @@ class CartsManagerDb {
     }
 
 
-    //   Agrego nuevo método para obtener todos los carritos
-
     async removeCartItem(email, productId) {
         try {
             if (!this.db.cartsCollection) {
@@ -149,12 +147,7 @@ class CartsManagerDb {
             console.error(e);
         }
     }
-
-
-
 }
-
-
 
 
 module.exports = CartsManagerDb;

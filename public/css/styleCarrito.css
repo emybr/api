@@ -17,7 +17,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
-    /* color: #e8e8e8; */
     transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
@@ -155,16 +154,3 @@
 }
 
 
-
-
-/* .content.btnFinalizar {
-    color: #e8e8e8;
-    text-decoration: none;
-    padding: 10px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
-    border-radius: 5px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-} */

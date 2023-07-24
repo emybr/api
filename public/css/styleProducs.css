@@ -3,12 +3,10 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 20px;
-    /* Espacio entre las tarjetas */
 }
 
 .tarjetaProduc {
     flex: 0 0 calc(33.33% - 20px);
-    /* Tamaño y margen de las tarjetas */
     background: #d3d3d3;
     padding: 20px;
     border-radius: 8px;
@@ -20,13 +18,11 @@
     flex: 0 0 calc(20% - 20px);
     width: 255px;
     height: 481px;
-    /* background: lightgrey; */
     border: 3px inset white;
     background: #e8e8e8;
     box-shadow: inset 20px 20px 60px #c5c5c5, inset -20px -20px 60px #ffffff;
     transition: all .5s ease-in-out;
     border-radius: 1.5rem;
-    /* display: flex; */
     justify-content: center;
     align-items: center;
     font-weight: bolder;
@@ -35,7 +31,6 @@
     margin: 0 auto;
     max-width: 100%;
     padding: 20px;
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 
@@ -190,8 +185,8 @@
         inset -4px -4px 12px #ffffff;
 }
 
-.btnSubir{
+.btnSubir {
     display: flex;
     margin-left: -5%;
-    
+
 }

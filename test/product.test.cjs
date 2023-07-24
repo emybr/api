@@ -1,5 +1,4 @@
 
-// const { it } = require('@faker-js/faker');
 const chai = require('chai');
 const supertest = require('supertest');
 const chaiHttp = require('chai-http');
@@ -28,27 +27,27 @@ describe('Pruebas de la ruta /mongo/productos/addproduc', () => {
             stock: 10
         };
         const response = await request.post('/db/mongo/products/addproduts').send(productoMock);
-        const { statusCode, ok, body } = response; // Corregido 'statuscode' a 'statusCode'
+        const { statusCode, ok, body } = response;
         console.log(statusCode);
         console.log(ok);
         console.log(body);
-        // Realiza las expectativas aquí usando chai.expect
+
         expect(statusCode).to.equal(200);
         expect(ok).to.be.true;
     });
 });
 
-// prueba para eliminar producto por id//
+
 
 describe('Pruebas de la ruta /mongo/productos/:id', () => {
     it('should delete a product', async () => {
         const id = 17;
         const response = await request.delete(`/db/mongo/products/${id}`);
-        const { statusCode, ok, body } = response; // Corregido 'statuscode' a 'statusCode'
+        const { statusCode, ok, body } = response;
         console.log(statusCode);
         console.log(ok);
         console.log(body);
-        // Realiza las expectativas aquí usando chai.expect
+        
         expect(statusCode).to.equal(200);
         expect(ok).to.be.true;
     });
@@ -56,7 +55,7 @@ describe('Pruebas de la ruta /mongo/productos/:id', () => {
 );
 
 
-// prueba para ruta autualizar producto por id//
+
 
 describe('Pruebas de la ruta db/mongo/products/:id', () => {
     it('should update a product', async () => {
@@ -70,7 +69,7 @@ describe('Pruebas de la ruta db/mongo/products/:id', () => {
             .send(updatedProductData);
         expect(response.statusCode).to.equal(200);
         expect(response.ok).to.be.true;
-        // Agrega más expectativas según sea necesario para verificar el resultado de la actualización
+
     });
 
     it('should handle errors when updating a product', async () => {
@@ -86,7 +85,7 @@ describe('Pruebas de la ruta db/mongo/products/:id', () => {
 
         expect(response.statusCode).to.equal(500);
         expect(response.ok).to.be.false;
-        // Agrega más expectativas según sea necesario para verificar el manejo de errores
+
     });
 });
 

@@ -77,11 +77,10 @@ async function postLoginUser(req, res, next) {
             const welcomeMessage = `Bienvenido, ${user.email} 😃`;
             req.session.message = welcomeMessage;
 
-            // Redireccionar según el rol del usuario
             if (req.session.role === 'admin') {
-                return res.redirect('/admin'); // Redirige a la vista para el administrador
+                return res.redirect('/admin'); 
             } else {
-                return res.redirect('/products/db'); // Redirige a la vista para usuarios normales (user, premium)
+                return res.redirect('/products/db'); 
             }
 
         } catch (error) {
@@ -114,7 +113,6 @@ async function postResetToken(req, res) {
     const token = req.body.token;
     const newPassword = req.body.newPassword;
     try {
-        // Buscar el documento correspondiente al token en la colección "passwordResetTokens"
         const passwordResetToken = await userManagerDb.getPasswordResetToken(token);
         if (!passwordResetToken) {
             res.redirect('/generate-reset-link');
@@ -163,7 +161,6 @@ async function deleteUserInactivo(req, res) {
     }
 }
 
-//agrego funcion para eliminar un usuario por email desde administrador
 
 async function deleteUser(req, res) {
     try {
@@ -177,7 +174,6 @@ async function deleteUser(req, res) {
     }
 }
 
-//agrego fucion para obtener todos los usuarios y sus datos nombre, correo y rol
 
 async function getAllUsers(req, res) {
     try {
@@ -199,7 +195,6 @@ async function getAdmin(req, res) {
     }
 }
 
-//aguego funcion para setear rol de usaurio admin/premium
 
 async function postSetRoleByEmail(req, res) {
     try {
