@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-const port = process.env.PORT ;
+const port = process.env.PORT;
 const { engine } = require('express-handlebars');
 const httpServer = require('http').createServer(app);
 const { Server } = require('socket.io');
@@ -16,7 +16,9 @@ const ChatManagerDb = require('./dao/mongo/chat-manager.db.cjs');
 const db = new Database();
 const chatManagerDb = new ChatManagerDb
 const path = require('path');
+const { env } = require('process');
 const io = new Server(httpServer);
+
 
 // Configuración de sesión
 sessionConfig(app);
@@ -38,7 +40,7 @@ app.use(express.static(publicPath));
 
 app.use('/db', mongoRoutes);
 app.use('/api', routes);
-app.use('/', webRouter,);
+app.use('/', webRouter);
 
 // Conexión a la base de datos y inicio del servidor
 db.connectToDatabase()
